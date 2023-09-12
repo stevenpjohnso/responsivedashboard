@@ -22,20 +22,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
         child: Column(
           children: [
             // first 4 boxes in grid
-            AspectRatio(
-              aspectRatio: 1,
-              child: SizedBox(
-                width: double.infinity,
-                child: GridView.builder(
-                  itemCount: 4,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) {
-                    return MyBox();
-                  },
-                ),
-              ),
-            ),
+            AspectRatio(aspectRatio: 2, child: MyBox()),
 
             // list of previous days
             Expanded(

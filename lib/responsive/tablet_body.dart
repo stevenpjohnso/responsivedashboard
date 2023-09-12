@@ -16,34 +16,44 @@ class _TabletScaffoldState extends State<TabletScaffold> {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // first 4 boxes in grid
-            AspectRatio(
-              aspectRatio: 4,
-              child: SizedBox(
-                width: double.infinity,
-                child: GridView.builder(
-                  itemCount: 4,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
-                  itemBuilder: (context, index) {
-                    return MyBox();
-                  },
-                ),
-              ),
-            ),
-
-            // list of previous days
+            // open drawer
+            AspectRatio(aspectRatio: 1 / 3, child: myDrawer),
             Expanded(
-              child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return const MyTile();
-                },
+              flex: 2,
+              child: Column(
+                children: [
+                  // first 4 boxes in grid
+                  AspectRatio(
+                    aspectRatio: 4,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: GridView.builder(
+                        itemCount: 4,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4),
+                        itemBuilder: (context, index) {
+                          return MyBox();
+                        },
+                      ),
+                    ),
+                  ),
+
+                  // list of previous days
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return const MyTile();
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
